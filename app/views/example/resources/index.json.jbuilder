@@ -1,0 +1,1 @@
+json.array! @example_resources, partial: 'example_resources/example_resource', as: :example_resource
