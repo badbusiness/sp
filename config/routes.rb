@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :examples
+##  get 'supplier/new'
+
+  get 'suppliers', to: 'suppliers#index'
+
   namespace :example do
     resources :resources
   end
@@ -8,7 +13,7 @@ Rails.application.routes.draw do
       resources :articles
   end
   
-  
+  resources :suppliers
   #get 'stock/articles/index'
   
   
