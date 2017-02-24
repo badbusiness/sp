@@ -1,0 +1,3 @@
+class Customer < Relation
+    
+end
