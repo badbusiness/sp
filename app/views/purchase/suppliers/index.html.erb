@@ -1,0 +1,23 @@
+<h1>Suppliers</h1>
+<table class='table table-hover table-sm'>
+	<thead>
+		<th>#</th>
+		<th>Name</th>
+		<th> </th>
+	</thead>
+	<tbody>
+		<% @purchase_suppliers.each do |purchase_supplier| %>
+		<tr>
+			<td><strong><%= purchase_supplier.id%></strong></td>
+			<td><%= purchase_supplier.name %></td>
+			<td></td>
+			<td></td>			
+			<td><%= link_to("show", purchase_supplier)
+				%>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+<%= link_to 'New Supplier', new_purchase_supplier_path %>

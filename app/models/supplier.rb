@@ -1,3 +1,0 @@
-class Supplier < Relation
-  
-end
