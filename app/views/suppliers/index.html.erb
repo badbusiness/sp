@@ -8,8 +8,8 @@
 	<tbody>
 		<% @suppliers.each do |supplier| %>
 		<tr>
-			<td></td>
-			<td><strong><%= supplier.name %></strong></td>
+			<td><strong><%= supplier.id%></strong></td>
+			<td><%= supplier.name %></td>
 			<td></td>
 			<td></td>			
 			<td><%= link_to("show", supplier)
