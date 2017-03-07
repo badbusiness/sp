@@ -13,12 +13,10 @@ module Stock
     end
     
     def create
-      
-
       @stock_article = Stock::Article.new(article_params)
       respond_to do |format|
         if @stock_article.save
-          format.html {redirect_to @stock_article, @notice = 'Article was succesfully created.'}
+          format.html {redirect_to @stock_article, notice: 'Article was succesfully created.'}
         else
           format.html (render :new )
         end
