@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :examples
 ##  get 'supplier/new'
 
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   
   namespace :purchase do 
     resources :suppliers
+    resources :orders
   end
   
   #resources :suppliers
