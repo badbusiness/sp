@@ -24,6 +24,19 @@ module Purchase
       end
     end
     
+    def edit
+      @order = Purchase::Order.find(params[:id])  
+    end
+    
+    def update
+      @order = Purchase::Order.find_by_id(params[:id])
+      if @order.update(order_params)
+        redirect_to @order, notice: "Order is geupdate"
+      else
+        render :edit, notice: "het ging niet goed"
+      end
+    end
+    
     private
     
 
@@ -33,3 +46,4 @@ module Purchase
     
   end
 end
+
