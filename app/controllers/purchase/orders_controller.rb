@@ -2,7 +2,7 @@ module Purchase
   class OrdersController < ApplicationController
 
     def index
-      @orders = Purchase::Order.all
+      @orders = Purchase::Order.all.reverse
     end
 
     def new
@@ -17,7 +17,7 @@ module Purchase
     def create
       @order = Purchase::Order.new(order_params)
       if @order.save
-        redirect_to @order, notice: 'Order was successfully created.'
+        redirect_to edit_purchase_order_path(@order), notice: 'Order was successfully created.'
       else
         flash[:notice] = @order.errors.full_messages << @order.inspect
         render :new
@@ -31,7 +31,7 @@ module Purchase
     def update
       @order = Purchase::Order.find_by_id(params[:id])
       if @order.update(order_params)
-        redirect_to @order, notice: "Order is geupdate"
+        redirect_to edit_purchase_order_path(@order), notice: "Order is geupdate"
       else
         render :edit, notice: "het ging niet goed"
       end
