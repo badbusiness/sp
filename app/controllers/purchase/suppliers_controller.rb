@@ -1,5 +1,6 @@
 module Purchase
   class SuppliersController < ApplicationController
+    before_action :set_supplier, only: [:show, :edit, :update, :destroy]
 
     def index
       @purchase_suppliers = Purchase::Supplier.all
@@ -23,7 +24,7 @@ module Purchase
     end
  
     def show
-      @supplier = Purchase::Supplier.find(params[:supplier_id])
+      #@supplier = Purchase::Supplier.find(params[:id])
     end
 
     def update_name_from_id
@@ -32,5 +33,12 @@ module Purchase
         format.js
       end
     end  
+    
+    private
+    
+    def set_supplier
+      @supplier = Purchase::Supplier.find(params[:id])
+    end
+    
   end
 end
