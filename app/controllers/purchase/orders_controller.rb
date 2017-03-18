@@ -2,7 +2,7 @@ module Purchase
   class OrdersController < ApplicationController
 
     def index
-      @orders = Purchase::Order.all.reverse
+      @orders = Purchase::Order.includes(:Supplier).all.reverse
     end
 
     def new
