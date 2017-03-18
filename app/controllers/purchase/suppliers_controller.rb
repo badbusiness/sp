@@ -28,7 +28,12 @@ module Purchase
     end
 
     def update_name_from_id
-      @supplier_name = Purchase::Supplier.find_by_id(params[:supplier_id]).name
+      if @supplier = Purchase::Supplier.find_by_id(params[:supplier_id])
+        @supplier_name =  @supplier.name
+      else
+        @supplier_name = "onbekend"
+      end
+        
       respond_to do |format|
         format.js
       end
