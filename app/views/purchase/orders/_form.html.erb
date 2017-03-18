@@ -3,7 +3,7 @@
   <div class="field">
     <%= f.label :Leverancier %>
     <%= f.text_field :Supplier_id %> 
-	(<% if order.Supplier %><%= order.Supplier.name %> <% end %>) <%= link_to "update", "#", {id:"update_link"}%>
+	(<span id="supplier_name"><% if order.Supplier %><%= order.Supplier.name %> <% end %> </span>) 
   </div>
 
   <div class="actions">

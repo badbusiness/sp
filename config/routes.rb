@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   end
   
   namespace :purchase do 
-    resources :suppliers
+    resources :suppliers do 
+      get "update_name_from_id", to: 'suppliers#update_name_from_id'
+    end
     resources :orders
   end
   
