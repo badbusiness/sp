@@ -2,7 +2,8 @@
 
   <div class="field">
     <%= f.label :Leverancier %>
-    <%= f.text_field :Supplier_id %>
+    <%= f.text_field :Supplier_id %> 
+	(<% if order.Supplier %><%= order.Supplier.name %> <% end %>) <%= link_to "update", "#", {id:"update_link"}%>
   </div>
 
   <div class="actions">
