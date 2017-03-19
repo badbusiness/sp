@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :comments
   resources :examples
 ##  get 'supplier/new'
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   end
   
   namespace :purchase do 
+    resources :order_lines 
     resources :suppliers do 
       get "update_name_from_id", to: 'suppliers#update_name_from_id'
     end
