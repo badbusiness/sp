@@ -1,3 +1,3 @@
 class Sale::Customer < Relation
-#  has_many :Orders
+  has_many :orders
 end
