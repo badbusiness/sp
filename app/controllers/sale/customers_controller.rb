@@ -13,40 +13,38 @@ module Sale
 
     ## Hieronder nog aanpassen voor verkoop
     def create
-      @supplier = Purchase::Supplier.new(name: params[:purchase_supplier][:name])
+      @customer = Sale::Customer.new(customer_params)
       respond_to do |format|
-        if @supplier.save
-          format.html { redirect_to @supplier, notice: 'Supplier was successfully created.' }
-          format.json { render :show, status: :created, location: @supplier }
+        if @customer.save
+          format.html { redirect_to sale_customers_path, notice: 'Klant aangemaakt!' }
         else
           format.html { render :new }
-          format.json { render json: @supplier.errors, status: :unprocessable_entity }
         end
       end
     end
- 
-    def show
-      #@supplier = Purchase::Supplier.find(params[:id])
+    
+    def edit
+      @customer = Sale::Customer.find_by_id(params[:id])
     end
 
-
-    ##NOg aanpassen voor klant
-    def update_name_from_id
-      if @supplier = Purchase::Supplier.find_by_id(params[:supplier_id])
-        @supplier_name =  @supplier.name
+    def update
+      @customer = Sale::Customer.find_by_id(params[:id])
+      if @customer.update(customer_params)
+        redirect_to sale_customers_path, notice: 'klant geupdate!'
       else
-        @supplier_name = "onbekend"
+        format.html {render :edit}
       end
-        
-      respond_to do |format|
-        format.js
-      end
-    end  
-    
+    end    
+
+
     private
     
     def set_customer
       @customer = Sale::Customer.find(params[:id])
+    end
+    
+    def customer_params
+      params.require(:sale_customer).permit(:name)
     end
     
   end

@@ -1,0 +1,23 @@
+<h1>Klanten</h1>
+<table class='table table-hover table-sm'>
+	<thead>
+		<th>#</th>
+		<th>Name</th>
+		<th> </th>
+	</thead>
+	<tbody>
+		<% @customers.each do |customer| %>
+		<tr>
+			<td><strong><%= customer.id%></strong></td>
+			<td><%= customer.name %></td>
+			<td></td>
+			<td></td>			
+			<td><%= link_to("edit", edit_sale_customer_path(customer))
+				%>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+<%= link_to 'Nieuwe klant', new_sale_customer_path %>
