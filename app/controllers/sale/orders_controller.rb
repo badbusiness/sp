@@ -17,9 +17,9 @@ module Sale
     ## Hieronder nog aanpassen voor verkoop
     
     def create
-      @order = Purchase::Order.new(order_params)
+      @order = Sale::Order.new(order_params)
       if @order.save
-        redirect_to edit_purchase_order_path(@order), notice: 'Order was successfully created.'
+        redirect_to edit_sale_order_path(@order), notice: 'Order was successfully created.'
       else
         flash[:notice] = @order.errors.full_messages << @order.inspect
         render :new
@@ -27,14 +27,14 @@ module Sale
     end
     
     def edit
-      @order = Purchase::Order.find(params[:id])  
-      @order_lines = @order.order_lines
+      @order = Sale::Order.find(params[:id])  
+      #@order_lines = @order.order_lines
     end
     
     def update
-      @order = Purchase::Order.find_by_id(params[:id])
+      @order = Sale::Order.find_by_id(params[:id])
       if @order.update(order_params)
-        redirect_to edit_purchase_order_path(@order), notice: "Order is geupdate"
+        redirect_to edit_sale_order_path(@order), notice: "Order is geupdate"
       else
         render :edit, notice: "het ging niet goed"
       end

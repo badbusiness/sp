@@ -1,4 +1,4 @@
 class Sale::Order < Order
-  belongs_to :customer
+  belongs_to :Customer
   has_many :order_lines
 end
