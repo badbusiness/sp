@@ -1,0 +1,27 @@
+<h1>Orders</h1>
+<table class="table table-hover table-sm">
+	<thead>
+		<th>#</th>
+		<th>Supplier</th>
+		
+		<th></th>
+	</thead>
+	<tbody>
+		<tr>
+			<td></td>
+			<td><%= link_to 'nieuwe order' , new_purchase_order_path %></td>
+			
+			<td></td>
+		</tr>		
+<% @orders.each do |order| %>
+	<tr>
+		<td><%= order.id %></td>
+		<td><%= order.Supplier.name %></td>		
+		<td><%= link_to :edit, edit_purchase_order_path(order)%></td>		
+	</tr>
+<% end %>
+</tbody>
+</table>
+
+
+

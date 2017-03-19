@@ -1,0 +1,12 @@
+<%= form_for(order) do |f| %>
+
+  <div class="field">
+    <%= f.label :Leverancier %>
+    <%= f.text_field :Supplier_id %> 
+	(<span id="supplier_name"><% if order.Supplier %><%= order.Supplier.name %> <% end %> </span>) 
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

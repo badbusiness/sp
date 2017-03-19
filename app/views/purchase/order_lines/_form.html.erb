@@ -1,0 +1,33 @@
+<%= form_for(purchase_order_line) do |f| %>
+  <% if purchase_order_line.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(purchase_order_line.errors.count, "error") %> prohibited this example_resource from being saved:</h2>
+
+      <ul>
+      <% purchase_order_line.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :article %>
+    <%= f.text_field :article_id %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :order %>
+    <%= f.text_field :order_id %>
+  </div>
+  
+    
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

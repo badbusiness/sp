@@ -1,0 +1,10 @@
+<h1>Inkoop order <%= @order.id %></h1>
+
+<%= render 'form', order: @order %>
+
+
+Aantal orderregels: <%= @order_lines.count%>
+
+<%= render template: "purchase/order_lines/index"%>
+
+<%= link_to 'Back', purchase_orders_path %>
