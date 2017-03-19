@@ -26,6 +26,7 @@ module Purchase
     
     def edit
       @order = Purchase::Order.find(params[:id])  
+      @order_lines = @order.order_lines
     end
     
     def update

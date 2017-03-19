@@ -5,15 +5,31 @@ class Purchase::OrderLinesController < ApplicationController
     @order_lines = Purchase::OrderLine.all
   end
 
-  def show
+  def show 
   end
+
+  def edit 
+  end
+
+  def update
+    respond_to do |format|
+      if @purchase_order_line.update(purchase_order_line_params)
+        format.html {redirect_to purchase_order_lines_path, notice: "Orderegel aangepast"}
+      else
+        format.html {render :edit}
+      end
+    end
+  end
+  
+  
+  
   
   def new
     @purchase_order_line = Purchase::OrderLine.new
   end
   
   def create
-    @purchase_order_line = Purchase::OrderLine.new(order_line_params)
+    @purchase_order_line = Purchase::OrderLine.new(purchase_order_line_params)
     respond_to do |format|
       if @purchase_order_line.save
         format.html {redirect_to @purchase_order_line, notice: "Orderregel aangemaakt"}
@@ -24,11 +40,17 @@ class Purchase::OrderLinesController < ApplicationController
     end
   end
   
+  
+    
+
+  
+  private
+  
   def set_order_line
     @purchase_order_line = Purchase::OrderLine.find(params[:id])
   end
   
-  def order_line_params
+  def purchase_order_line_params
     params.require(:purchase_order_line).permit(:amount, :article_id, :order_id)
   end
   
