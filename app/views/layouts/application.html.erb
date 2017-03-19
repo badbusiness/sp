@@ -40,8 +40,9 @@
 		  <div class="row">
 	          <nav class="col-2 hidden-xs-down bg-faded sidebar">
 	          	Verkoop
-	            <%= link_to "Klanten", stock_articles_path, class:'nav-link' %>
-	            <%= link_to "Orders", stock_articles_path, class:'nav-link' %>
+	            <%= link_to "Klanten", sale_customers_path, class:'nav-link' %>
+	            <%= link_to "Orders", sale_orders_path, class:'nav-link' %>
+				<%= link_to "OrderRegels", sale_order_lines_path, class:'nav-link' %>
 				Inkoop
 	            <%= link_to "Leveranciers", purchase_suppliers_path, class:'nav-link' %>
 	            <%= link_to "Orders", purchase_orders_path, class:'nav-link' %>	

@@ -15,6 +15,12 @@ Rails.application.routes.draw do
       resources :articles
   end
   
+  namespace :sale do
+    resources :order_lines
+    resources :customers
+    resources :orders
+  end
+  
   namespace :purchase do 
     resources :order_lines 
     resources :suppliers do 
