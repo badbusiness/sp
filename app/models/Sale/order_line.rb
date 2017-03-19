@@ -3,9 +3,14 @@ class Sale::OrderLine < OrderLine
   belongs_to :article, class_name: 'Stock::Article', foreign_key: 'article_id'
   
   def amount=(amount)
-    @amount = amount * -1
+    newamount = BigDecimal(amount).mult(-1,2)
+    write_attribute(:amount, newamount)
   end
   def amount
-    @amount*-1
+    if self[:amount].present?
+      return self[:amount]*-1
+    end
+    nil
   end
 end
+

@@ -15,8 +15,8 @@ class Sale::OrderLinesController < ApplicationController
   ## Hieronder nog aanpassen voor verkoop
   def update
     respond_to do |format|
-      if @purchase_order_line.update(purchase_order_line_params)
-        format.html {redirect_to purchase_order_lines_path, notice: "Orderegel aangepast"}
+      if @order_line.update(sale_order_line_params)
+        format.html {redirect_to sale_order_lines_path, notice: "Orderegel aangepast"}
       else
         format.html {render :edit}
       end
@@ -27,15 +27,15 @@ class Sale::OrderLinesController < ApplicationController
   
   
   def new
-    @purchase_order_line = Purchase::OrderLine.new
+    @order_line = Sale::OrderLine.new
   end
   
   def create
-    @purchase_order_line = Purchase::OrderLine.new(purchase_order_line_params)
+    @order_line = Sale::OrderLine.new(sale_order_line_params)
     respond_to do |format|
-      if @purchase_order_line.save
-        format.html {redirect_to @purchase_order_line, notice: "Orderregel aangemaakt"}
-        format.json {render :show, status: :created, location: @purchase_order_line}
+      if @order_line.save
+        format.html {redirect_to sale_order_lines_path, notice: "Orderregel aangemaakt"}
+        format.json {render :show, status: :created, location: @order_line}
       else
         format.html {render :new}
       end
@@ -49,7 +49,7 @@ class Sale::OrderLinesController < ApplicationController
   private
   
   def set_order_line
-    @sale_order_line = Sale::OrderLine.find(params[:id])
+    @order_line = Sale::OrderLine.find(params[:id])
   end
   
   def sale_order_line_params
