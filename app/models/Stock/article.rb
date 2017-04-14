@@ -4,4 +4,8 @@ class Stock::Article < ApplicationRecord
   def stock
     self.order_lines.sum(:amount)
   end
+  
+  def name_for_select
+    description + " " + specification
+  end
 end
