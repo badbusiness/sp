@@ -7,6 +7,7 @@ module Purchase
 
     def new
       @order = Purchase::Order.new
+      @order.order_lines.build
     end
 
     
@@ -26,12 +27,12 @@ module Purchase
     
     def edit
       @order = Purchase::Order.find(params[:id])  
-      @order_lines = @order.order_lines
+      @order.order_lines.build
     end
     
     def update
-      @order = Purchase::Order.find_by_id(params[:id])
-      if @order.update(order_params)
+      @order = Purchase::Order.find(params[:id])
+      if @order.update_attributes(order_params)
         redirect_to edit_purchase_order_path(@order), notice: "Order is geupdate"
       else
         render :edit, notice: "het ging niet goed"
@@ -42,7 +43,10 @@ module Purchase
     
 
     def order_params
-      params.require(:purchase_order).permit(:Supplier_id)
+      params.require(:purchase_order).permit! #(
+        #:Supplier_id,
+       # purchase_order_line_attributes: [:id, :_destroy, :article_id, :amount]
+      #)
     end
     
   end

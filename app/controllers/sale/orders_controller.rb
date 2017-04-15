@@ -7,6 +7,7 @@ module Sale
 
     def new
       @order = Sale::Order.new
+      @order_lines = @order.order_lines.new
     end
 
     
@@ -28,7 +29,13 @@ module Sale
     
     def edit
       @order = Sale::Order.find(params[:id])  
-      #@order_lines = @order.order_lines
+      if @order.order_lines.count==0
+        @order_lines = @order.order_lines.new
+
+
+      else
+        @order_lines = @order.order_lines.first
+      end
     end
     
     def update
@@ -44,7 +51,9 @@ module Sale
     
 
     def order_params
-      params.require(:sale_order).permit(:Customer_id)
+      params.require(:sale_order).permit(:Customer_id,
+        order_lines_attributes: [:id, :_destroy, :article_id, :amount]
+      )
     end
     
   end
