@@ -1,0 +1,29 @@
+<table class='table table-hover table-sm'>
+	<thead>
+		<th>#</th>
+		<th>Description</th>
+		<th>Specs</th>
+		<th>Voorraad</th>
+		<th>Artikelgroep</th>
+		<th> </th>
+	</thead>
+	<tbody>
+		<% stock_articles.each do |stock_article| %>
+		<tr>
+			<td><strong><%= stock_article.number %></strong></td>
+			<td><%= stock_article.description %></td>
+			<td><%= stock_article.specification %></td>
+			<td><%= stock_article.stock %></td>	
+			<td>
+				<% if stock_article.article_group %>
+					<%= stock_article.article_group.name%>
+				<% end %>
+			</td>
+
+			<td></td>			
+			<td><%= link_to("show", stock_article)%></td>
+			<td><%= link_to("Edit", edit_stock_article_path(stock_article))%>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

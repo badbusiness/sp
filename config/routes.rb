@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
   
+  namespace :stock do
+    get 'article_group/index'
+  end
+
+  namespace :stock do
+    get 'article_group/new'
+  end
+
+  namespace :stock do
+    get 'article_group/create'
+  end
+
   resources :comments
   resources :examples
 ##  get 'supplier/new'
@@ -13,6 +25,8 @@ Rails.application.routes.draw do
   
    namespace :stock do
       resources :articles
+      resources :article_groups
+      
   end
   
   namespace :sale do

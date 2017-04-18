@@ -1,0 +1,5 @@
+<h1><%=@article_group.name%></h1>
+
+<% if @article_group.articles %>
+<%= render "stock/articles/articles", stock_articles: @article_group.articles %>
+<% end %>
