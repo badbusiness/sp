@@ -5,7 +5,9 @@
 		<th>Specs</th>
 		<th>Voorraad</th>
 		<th>Artikelgroep</th>
-		<th> </th>
+		<th>Eenheid</th>
+		<th>Prijs</th>
+		<th></th>
 	</thead>
 	<tbody>
 		<% stock_articles.each do |stock_article| %>
@@ -20,7 +22,8 @@
 				<% end %>
 			</td>
 
-			<td></td>			
+			<td><%= stock_article.unit %></td>			
+			<td><%= number_to_currency(stock_article.purchase_price, :unit => "&euro;".html_safe) %></td>			
 			<td><%= link_to("show", stock_article)%></td>
 			<td><%= link_to("Edit", edit_stock_article_path(stock_article))%>
 		</tr>

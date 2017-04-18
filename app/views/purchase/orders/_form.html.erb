@@ -5,13 +5,30 @@
 		<thead>
 			<tr>
 				<th>article</th>
-				<th>Amount</th>
+				<th>Hoeveelheid</th>
+				<th>Eenheid</th>
+				<th>Totaalprijs</th>
 				<th><span class="badge badge-danger">Verwijderen</span></th>
 			</tr>
 		</thead>
 		<tbody>
-			<%= f.simple_fields_for :order_lines do |ol|%>
-				<%= render 'order_lines_form', {:f => ol} %>
+			<%= f.simple_fields_for :order_lines do |f|%>
+				<tr>
+					<td><%= f.association :article, label_method: :name_for_select, label: false %></td>
+					<td><%= f.input :amount, label: false %></td>
+					
+					<td>
+						<% if f.object.article %>
+							<%= f.object.article.unit %>
+						<% end %>
+					</td>
+					<td>
+						<% if f.object.article %>
+							<%= number_to_currency(f.object.price, unit: "&euro;".html_safe) %>
+						<% end %>
+					</td>
+					<td><%= f.check_box :_destroy, {class: "btn btn-xs btn-danger"} %></td>
+				</tr>	
 			<% end %>
 		</tbody>
 	</table>

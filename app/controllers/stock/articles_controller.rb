@@ -39,7 +39,7 @@ module Stock
     private
     
     def article_params
-      params.require(:stock_article).permit(:number, :description, :specification, :article_group_id,
+      params.require(:stock_article).permit(:number, :description, :specification, :article_group_id, :unit, :purchase_price, :vat,
       article_group_attributes: [:id]
       )
     end
