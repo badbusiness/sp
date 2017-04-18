@@ -4,6 +4,10 @@
   <%= f.input :description %>   
   <%= f.input :specification %>
   <%= f.association :article_group%>
+  <%= f.input :purchase_price %>
+  <%= f.input :unit %>
+  Btw percentage: <%= f.collection_radio_buttons(:vat, [["laag", "0.06"],["hoog", "0.21"]], :last, :first, label: "BTW")%>
   <%= f.button :submit %>
   
 <% end %>
+
