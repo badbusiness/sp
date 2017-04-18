@@ -11,4 +11,8 @@ class Stock::Article < ApplicationRecord
   def name_for_select
     description + " " + specification
   end
+  
+  def bruto_prijs
+    self.purchase_price*self.article_group.markup
+  end
 end
