@@ -1,0 +1,27 @@
+<h1>Artikel groepen</h1>
+<table class="table table-hover table-sm">
+	<thead>
+		<th>#</th>
+		<th>Naam</th>
+		<th>Opslag</th>
+		<th></th>
+	</thead>
+	<tbody>
+		<tr>
+			<td></td>
+			<td><%= link_to "Nieuwe artikelgroep", new_stock_article_group_path %></td>
+			<td></td>
+		</tr>
+		<% @article_groups.each do |ag|%>
+			<tr>
+				<td></td>
+				<td><%= link_to ag.name, ag %></td>
+				<td><%= ag.markup%></td>
+				<td><%= link_to 'aanpassen', edit_stock_article_group_path(ag)%>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+

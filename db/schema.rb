@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319114730) do
-
-  create_table "articles", force: :cascade do |t|
-    t.integer  "number"
-    t.string   "description"
-    t.string   "specification"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
+ActiveRecord::Schema.define(version: 20170418120411) do
 
   create_table "example_resources", force: :cascade do |t|
     t.string   "name"
@@ -59,6 +51,23 @@ ActiveRecord::Schema.define(version: 20170319114730) do
     t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stock_article_groups", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "markup"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stock_articles", force: :cascade do |t|
+    t.integer  "number"
+    t.string   "description"
+    t.string   "specification"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "article_group_id"
+    t.index ["article_group_id"], name: "index_stock_articles_on_article_group_id"
   end
 
 end
