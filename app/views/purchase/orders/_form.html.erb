@@ -6,11 +6,12 @@
 			<tr>
 				<th>article</th>
 				<th>Amount</th>
+				<th><span class="badge badge-danger">Verwijderen</span></th>
 			</tr>
 		</thead>
 		<tbody>
 			<%= f.simple_fields_for :order_lines do |ol|%>
-				<%= render 'order_lines_form', :f => ol %>
+				<%= render 'order_lines_form', {:f => ol} %>
 			<% end %>
 		</tbody>
 	</table>
