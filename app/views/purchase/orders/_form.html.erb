@@ -1,12 +1,20 @@
-<%= form_for(order) do |f| %>
 
-  <div class="field">
-    <%= f.label :Leverancier %>
-    <%= f.text_field :Supplier_id %> 
-	(<span id="supplier_name"><% if order.Supplier %><%= order.Supplier.name %> <% end %> </span>) 
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for @order do |f| %>
+	<%= f.association :Supplier %>
+	<table class='table table-sm table-hover'>
+		<thead>
+			<tr>
+				<th>article</th>
+				<th>Amount</th>
+				<th><span class="badge badge-danger">Verwijderen</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= f.simple_fields_for :order_lines do |ol|%>
+				<%= render 'order_lines_form', {:f => ol} %>
+			<% end %>
+		</tbody>
+	</table>
+	<%= f.button :submit %>
 <% end %>
+

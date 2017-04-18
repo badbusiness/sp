@@ -40,6 +40,12 @@ class Purchase::OrderLinesController < ApplicationController
     end
   end
   
+  def destroy
+    @purchase_order_line = Purchase::OrderLine.find(params[:id])
+    @order = @purchase_order_line.order
+    @purchase_order_line.destroy
+    redirect_to(order_url(@order))
+  end
   
     
 

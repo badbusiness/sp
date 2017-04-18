@@ -1,12 +1,6 @@
-<%= form_for(order) do |f| %>
-
-  <div class="field">
-    <%= f.label :Customer %>
-    <%= f.text_field :Customer_id %> 
-	
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for @order do |f| %>
+  	<%= f.association :Customer %>
+	<%= render 'order_lines'%>
+	<%= f.button :submit %>
 <% end %>
+  

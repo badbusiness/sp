@@ -1,0 +1,13 @@
+<table>
+	<tr>
+		<th>Artikel</th>
+		<th>Aantal</th>
+		<th></th>
+	</tr>
+	<%= simple_form_for @order_lines do |ol|%>
+		<tr>
+  			<td><%= ol.association :article, label_method: :name_for_select, label: false %></td>
+			<td><%= ol.input :amount, label: false %></td>
+		</tr>
+	<% end %>
+</table>
