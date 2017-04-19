@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419102026) do
+ActiveRecord::Schema.define(version: 20170419114736) do
 
   create_table "example_resources", force: :cascade do |t|
     t.string   "name"
@@ -30,21 +30,25 @@ ActiveRecord::Schema.define(version: 20170419102026) do
     t.integer  "order_id"
     t.string   "type"
     t.decimal  "amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.decimal  "article_price"
+    t.integer  "vat_id"
     t.index ["article_id"], name: "index_order_lines_on_article_id"
     t.index ["order_id"], name: "index_order_lines_on_order_id"
+    t.index ["vat_id"], name: "index_order_lines_on_vat_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.string   "type"
     t.integer  "Supplier_id"
     t.integer  "Customer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "name"
     t.string   "telephone"
     t.string   "email"
+    t.boolean  "geleverd?",   default: false
     t.index ["Customer_id"], name: "index_orders_on_Customer_id"
     t.index ["Supplier_id"], name: "index_orders_on_Supplier_id"
   end
