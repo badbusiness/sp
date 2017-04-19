@@ -2,6 +2,6 @@
 
 <%= render 'form', order: @order %>
 
-
+<%= link_to "uitleveren", { controller: 'deliveries',action:"new", id:@order.id}%>
 
 <%= link_to 'Back', sale_orders_path %>

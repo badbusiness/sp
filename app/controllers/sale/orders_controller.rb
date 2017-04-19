@@ -2,7 +2,7 @@ module Sale
   class OrdersController < ApplicationController
 
     def index
-      @orders = Sale::Order.includes(:Customer).all.reverse
+      @orders = Sale::Order.includes(:Customer).open.reverse
     end
 
     def new
@@ -45,10 +45,9 @@ module Sale
         render :edit, notice: "het ging niet goed"
       end
     end
-    
+        
     private
     
-
     def order_params
       params.require(:sale_order).permit!
       #(:Customer_id,

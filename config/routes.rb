@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :order_lines
     resources :customers
     resources :orders
+    resources :deliveries
   end
   
   namespace :purchase do 
