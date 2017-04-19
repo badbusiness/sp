@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Vat.create([
+  {description: "geen", percentage: "0"},
+  {description: "laag", percentage: "0.06"},
+  {description: "hoog", percentage: "0.21"}
+])

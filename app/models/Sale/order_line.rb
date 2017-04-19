@@ -17,7 +17,7 @@ class Sale::OrderLine < OrderLine
   end
   
   def btw
-    return regelwaarde*article.vat if article.present?
+    return regelwaarde*article.vat.percentage if article.present?
   end
   
  
