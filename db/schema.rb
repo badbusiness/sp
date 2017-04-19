@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170419114736) do
     t.string   "name"
     t.string   "telephone"
     t.string   "email"
-    t.boolean  "geleverd?",   default: false
+    t.boolean  "geleverd",    default: false
     t.index ["Customer_id"], name: "index_orders_on_Customer_id"
     t.index ["Supplier_id"], name: "index_orders_on_Supplier_id"
   end
