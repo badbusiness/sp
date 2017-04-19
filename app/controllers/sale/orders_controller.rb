@@ -28,19 +28,18 @@ module Sale
     end
     
     def edit
+      @order = Purchase::Order.find(params[:id])  
+      @order.order_lines.build
+    end
+    
+    def edit
       @order = Sale::Order.find(params[:id])  
-      if @order.order_lines.count==0
-        @order_lines = @order.order_lines.new
-
-
-      else
-        @order_lines = @order.order_lines.first
-      end
+      @order.order_lines.build
     end
     
     def update
       @order = Sale::Order.find_by_id(params[:id])
-      if @order.update(order_params)
+      if @order.update_attributes(order_params)
         redirect_to edit_sale_order_path(@order), notice: "Order is geupdate"
       else
         render :edit, notice: "het ging niet goed"
@@ -51,9 +50,10 @@ module Sale
     
 
     def order_params
-      params.require(:sale_order).permit(:Customer_id,
-        order_lines_attributes: [:id, :_destroy, :article_id, :amount]
-      )
+      params.require(:sale_order).permit!
+      #(:Customer_id,
+      #  order_lines_attributes: [:id, :_destroy, :article_id, :amount]
+      #)
     end
     
   end

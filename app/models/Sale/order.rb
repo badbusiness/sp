@@ -7,4 +7,35 @@ class Sale::Order < Order
   def name_for_select
     "#{id} #{Customer{:name}.name}"
   end
+  
+  def totaalprijs
+    counter = 0
+    self.order_lines.each do |ol|
+      if ol.article
+        counter += ol.regelwaarde
+      end
+    end
+    counter
+  end
+  
+  def btw
+    counter = 0 
+    self.order_lines.each do |ol|
+      if ol.btw
+        counter += ol.btw
+      end
+    end
+    counter
+  end
+  
+  def inclusief_btw
+    counter = 0
+    self.order_lines.each do |ol|
+      if ol.inclusief_btw
+        counter += ol.inclusief_btw
+      end
+    end
+    counter
+  end
+  
 end

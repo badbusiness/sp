@@ -12,6 +12,10 @@ module ApplicationHelper
       end
       nil
     end
+    
+    def number_to_euro(value)
+      number_to_currency(value, "&euro; ".html_safe)
+    end
 
 end
 

@@ -1,6 +1,42 @@
 <%= simple_form_for @order do |f| %>
   	<%= f.association :Customer %>
-	<%= render 'order_lines'%>
+	<%= f.label :name%>: <%= f.input_field :name %> <br />
+	<%= f.label :telefoon%>: <%= f.input_field :telephone %><br />
+	<%= f.label :email%>: <%= f.input_field :email %><br />
+<table class="table table-hover table-sm">
+		<tr>
+			<th>Artikel</th>
+			<th>Aantal</th>
+			<th>Eenheid</th>
+			<th>Bruto Prijs</th>
+			<th>Regelwaarde</th>
+			<th>BTW</th>
+			<th>Inclusief btw</th>
+			<th><span class="badge badge-danger">Verwijderen</span></th>
+			<th></th>
+		</tr>
+		<%= f.fields_for :order_lines do |ol|%>
+			<tr>
+	  			<td><%= ol.association :article, label_method: :name_for_select, label: false %></td>
+				<td><%= ol.input :amount, label: false %></td>
+				<td><%= unit(ol)%></td>
+				<td><%= bruto_prijs(ol)%></td>		
+				<td><%= regelwaarde(ol )%></td>
+				<td><%= btw(ol)%></td>
+				<td><%= inclusief_btw(ol)%></td>
+				<td><%= ol.check_box :_destroy, {class: "btn btn-xs btn-danger"} %></td>
+			</tr>
+		<% end %>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><%= totaalprijs_ex(@order)%></td>
+			<td><%= totaal_btw(@order)%></td>
+			<td><%= totaal_inclusief_btw(@order)%></td>					
+	</table>
+	
 	<%= f.button :submit %>
 <% end %>
   
