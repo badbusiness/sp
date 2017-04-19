@@ -6,7 +6,7 @@
   <%= f.association :article_group%>
   <%= f.input :purchase_price %>
   <%= f.input :unit %>
-  Btw percentage: <%= f.collection_radio_buttons(:vat, [["laag", "0.06"],["hoog", "0.21"]], :last, :first, label: "BTW")%>
+  Btw percentage: <%= f.association :vat, label_method: :name_for_select%>
   <%= f.button :submit %>
   
 <% end %>

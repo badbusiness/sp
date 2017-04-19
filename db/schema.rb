@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418171100) do
+ActiveRecord::Schema.define(version: 20170419102026) do
 
   create_table "example_resources", force: :cascade do |t|
     t.string   "name"
@@ -72,8 +72,15 @@ ActiveRecord::Schema.define(version: 20170418171100) do
     t.integer  "article_group_id"
     t.decimal  "purchase_price",   default: "0.0"
     t.string   "unit"
-    t.float    "vat",              default: 0.21
+    t.integer  "vat_id",           default: 3
     t.index ["article_group_id"], name: "index_stock_articles_on_article_group_id"
+  end
+
+  create_table "vats", force: :cascade do |t|
+    t.string   "description"
+    t.decimal  "percentage"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
