@@ -12,6 +12,7 @@
 			<th>Regelwaarde</th>
 			<th>BTW</th>
 			<th>Inclusief btw</th>
+			<th><span class="badge badge-danger">Verwijderen</span></th>
 			<th></th>
 		</tr>
 		<%= f.fields_for :order_lines do |ol|%>
@@ -23,6 +24,7 @@
 				<td><%= regelwaarde(ol )%></td>
 				<td><%= btw(ol)%></td>
 				<td><%= inclusief_btw(ol)%></td>
+				<td><%= ol.check_box :_destroy, {class: "btn btn-xs btn-danger"} %></td>
 			</tr>
 		<% end %>
 		<tr>

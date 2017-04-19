@@ -8,35 +8,36 @@ class Sale::OrderLine < OrderLine
   end
   
   def amount
-    if self[:amount].present?
-      return self[:amount]*-1
-    end
-    nil
+    return self[:amount]*-1 if amount_present?
+    return nil
   end
   
   def regelwaarde
-    if self.article
-      return self.amount*self.article.purchase_price*self.article.article_group.markup
-    else
-      return nil
-    end
+    return amount*article.purchase_price*article.article_group.markup if article.present?
   end
   
   def btw
-    if self.article
-      return self.regelwaarde*self.article.vat
-    else
-      return nil
-    end
+    return regelwaarde*article.vat if article.present?
   end
   
+ 
   def inclusief_btw
-    if self.article
-      return self.regelwaarde+self.btw
-    else
-      return nil
-    end
+    sum_if_article_present(regelwaarde, btw)
   end
   
+  private
+    
+  def sum_if_article_present(field1, field2)
+    return field1 + field2 if article_present?
+  end
+  
+  def article_present?
+    return true if article
+  end
+  
+  def amount_present?
+    return true if self[:amount].present?
+  end
+    
 end
 
