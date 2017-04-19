@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20170419114736) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.decimal  "article_price"
+    t.decimal  "reduction"
     t.integer  "vat_id"
     t.index ["article_id"], name: "index_order_lines_on_article_id"
     t.index ["order_id"], name: "index_order_lines_on_order_id"
