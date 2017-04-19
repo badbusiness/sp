@@ -5,7 +5,9 @@ class Stock::Article < ApplicationRecord
   accepts_nested_attributes_for :article_group
   accepts_nested_attributes_for :vat
   
-  
+  def sale_price
+    purchase_price*article_group.markup
+  end
   
   def stock
     self.order_lines.sum(:amount)

@@ -53,7 +53,7 @@ class Sale::OrderLinesController < ApplicationController
   end
   
   def sale_order_line_params
-    params.require(:sale_order_line).permit(:amount, :article_id, :order_id)
+    params.require(:sale_order_line).permit!#(:amount, :article_id, :order_id)
   end
   
 end

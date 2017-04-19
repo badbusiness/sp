@@ -5,6 +5,9 @@
 		<th>Ordernummer</th>
 		<th>Artikel</th>
 		<th>Aantal</th>
+		<th>BTW</th>
+		<th>Bruto Prijs</th>
+		<th>Korting</th>
 		
 		
 		<th></th>
@@ -21,6 +24,9 @@
 		<td><%= order_line.order.id %></td>
 		<td><%= order_line.article.description %></td>		
 		<td><%= order_line.amount %></td>		
+		<td><%= order_line.vat.description%>
+		<td><%= order_line.article_price%>
+		<td><%= order_line.reduction %>
 		<td><%= link_to :edit, edit_sale_order_line_path(order_line)%></td>		
 	</tr>
 <% end %>

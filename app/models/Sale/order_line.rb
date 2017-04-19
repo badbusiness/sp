@@ -4,6 +4,14 @@ class Sale::OrderLine < OrderLine
   belongs_to :vat
   accepts_nested_attributes_for :vat
   
+  before_validation :copy_article_details
+ 
+  def copy_article_details
+    write_attribute(:vat_id, article.vat.id)
+    write_attribute(:article_price, article.sale_price)
+  end
+  
+  
   
   def amount=(amount)
     newamount = BigDecimal(amount).mult(-1,2)
@@ -15,12 +23,15 @@ class Sale::OrderLine < OrderLine
     return nil
   end
   
+  
+  
+  
   def regelwaarde
-    return amount*article.purchase_price*article.article_group.markup if article.present?
+    return amount*article_price if article.present?
   end
   
   def btw
-    return regelwaarde*article.vat.percentage if article.present?
+    return regelwaarde*vat.percentage if article.present?
   end
   
  
