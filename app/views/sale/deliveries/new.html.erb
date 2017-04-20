@@ -1,4 +1,11 @@
-Je wilt de volgende order uitleveren: <%= @order.id %>(<%= @order.Customer.name%>) bestaande uit de volgende artikelen:
+Je wilt de volgende order uitleveren: <br />
+<%= @order.id %>(<%= @order.Customer.name%>) <br />
+Naam: <b><%= @order.name %></b><br />
+Telefoonnummer: <b><%= @order.telephone %></b><br />
+Email: <b><%= @order.email%></b><br /><br />
+
+
+bestaande uit de volgende artikelen:
 <table class="table table-sm table-hover">
 	<thead>
 		<th>Omschrijving</th>
@@ -59,3 +66,11 @@ Je wilt de volgende order uitleveren: <%= @order.id %>(<%= @order.Customer.name%
 
 	</tbody>
 </table>
+
+
+<%= simple_form_for @order do |f|%>
+	<%= f.input :geleverd %>
+	<%= f.input :gefactureerd %>	
+	<%= f.button :submit%>
+	<% end %>
+

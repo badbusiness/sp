@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419114736) do
+ActiveRecord::Schema.define(version: 20170420143615) do
 
   create_table "example_resources", force: :cascade do |t|
     t.string   "name"
@@ -44,12 +44,13 @@ ActiveRecord::Schema.define(version: 20170419114736) do
     t.string   "type"
     t.integer  "Supplier_id"
     t.integer  "Customer_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "name"
     t.string   "telephone"
     t.string   "email"
-    t.boolean  "geleverd",    default: false
+    t.boolean  "geleverd",     default: false
+    t.boolean  "gefactureerd", default: false
     t.index ["Customer_id"], name: "index_orders_on_Customer_id"
     t.index ["Supplier_id"], name: "index_orders_on_Supplier_id"
   end
