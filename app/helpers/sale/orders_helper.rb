@@ -6,8 +6,8 @@ module Sale::OrdersHelper
   end
   
   def bruto_prijs(ol)
-    if ol.object.article
-      number_to_currency(ol.object.article.bruto_prijs, unit: "&euro; ".html_safe)
+    if ol.object.article_price
+      number_to_currency(ol.object.article_price, unit: "&euro; ".html_safe)
     end
   end
   

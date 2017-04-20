@@ -1,0 +1,76 @@
+Je wilt de volgende order uitleveren: <br />
+<%= @order.id %>(<%= @order.Customer.name%>) <br />
+Naam: <b><%= @order.name %></b><br />
+Telefoonnummer: <b><%= @order.telephone %></b><br />
+Email: <b><%= @order.email%></b><br /><br />
+
+
+bestaande uit de volgende artikelen:
+<table class="table table-sm table-hover">
+	<thead>
+		<th>Omschrijving</th>
+		<th>Specificatie</th>
+		<th>Aantal</th>
+		<th>Brutoprijs</th>		
+		<th>Korting (%)</th>		
+		<th>Regeltotaal</th>
+		<th>BTW</th>
+	</thead>
+	<tbody>
+		<% @order.order_lines.each do |ol|%>			
+			<tr>
+				<td><%= ol.article.description%></td>
+				<td><%= ol.article.specification%></td>				
+				<td><%= ol.amount%></td>
+				<td><%= number_to_currency(ol.article_price, unit: "&euro; ".html_safe)%></td>
+				<td><%= number_to_percentage(ol.reduction)%></td>				
+				<td><%= number_to_currency(ol.regelwaarde, unit: "&euro; ".html_safe)%></td>
+				<td><%= ol.vat.description%></td>							
+			</tr>					
+		<% end %>
+		<tr>
+			<th>subtotaal:</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th><%= number_to_currency(@order.totaalprijs, unit: "&euro; ".html_safe)%></th>						
+		</tr>
+		<tr>
+			<td>btw laag:</td>
+			<td></td>
+			<td></td>
+			<td><%= number_to_currency(@order.btw_laag[:grondslag], unit: "&euro; ".html_safe)%></td>
+			<td></td>
+			<td><%= number_to_currency(@order.btw_laag[:btw], unit: "&euro; ".html_safe)%></td>									
+		</tr>
+		<tr>
+			<td>btw hoog:</td>
+			<td></td>
+			<td></td>
+			<td><%= number_to_currency(@order.btw_hoog[:grondslag], unit: "&euro; ".html_safe)%></td>
+			<td></td>
+			<td><%= number_to_currency(@order.btw_hoog[:btw], unit: "&euro; ".html_safe)%></td>									
+		</tr>
+		<tr>
+			<th>Totaal:</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th><%= number_to_currency(@order.inclusief_btw, unit: "&euro; ".html_safe)%></th>									
+		</tr>
+
+
+
+
+	</tbody>
+</table>
+
+
+<%= simple_form_for @order do |f|%>
+	<%= f.input :geleverd %>
+	<%= f.input :gefactureerd %>	
+	<%= f.button :submit%>
+	<% end %>
+

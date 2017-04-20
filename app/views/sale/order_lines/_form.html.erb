@@ -1,9 +1,11 @@
 
 
 <%= simple_form_for @order_line, html: {class: "form-inline"} do |f| %>
+  <%= f.error_notification %>
   <%= f.association :article, label_method: :name_for_select %>
   <%= f.input :amount %>   
   <%= f.association :order, label_method: :name_for_select %>
   <%= f.button :submit %>
   
 <% end %>
+

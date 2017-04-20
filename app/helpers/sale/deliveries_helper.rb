@@ -1,0 +1,2 @@
+module Sale::DeliveriesHelper
+end

@@ -2,7 +2,16 @@ module Sale
   class OrdersController < ApplicationController
 
     def index
-      @orders = Sale::Order.includes(:Customer).all.reverse
+      case params[:filter]
+      when "all"
+        @orders = Sale::Order.includes(:Customer).reverse
+      when "geleverd"
+        @orders = Sale::Order.includes(:Customer).where(geleverd: true, gefactureerd: false)
+      when "gefactureerd"        
+        @orders = Sale::Order.includes(:Customer).where(gefactureerd: true)
+      else
+        @orders = Sale::Order.includes(:Customer).open.reverse
+      end
     end
 
     def new
@@ -45,10 +54,9 @@ module Sale
         render :edit, notice: "het ging niet goed"
       end
     end
-    
+        
     private
     
-
     def order_params
       params.require(:sale_order).permit!
       #(:Customer_id,

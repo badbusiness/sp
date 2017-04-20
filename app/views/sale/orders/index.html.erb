@@ -1,3 +1,9 @@
+<span>Filters: <%= link_to "openstaand", sale_orders_path(filter: "open")%>
+<%= link_to "geleverd", sale_orders_path(filter: "geleverd")%>
+<%= link_to "gefactureerd", sale_orders_path(filter: "gefactureerd")%>
+<%= link_to "alles", sale_orders_path(filter: "all")%></span>
+
+
 <h1>Orders</h1>
 <table class="table table-hover table-sm">
 	<thead>
