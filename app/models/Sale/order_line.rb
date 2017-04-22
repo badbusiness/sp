@@ -1,6 +1,6 @@
 class Sale::OrderLine < OrderLine
   belongs_to :order
-  belongs_to :article, class_name: 'Stock::Article', foreign_key: 'article_id'
+  belongs_to :article, class_name: 'Stock::Article', foreign_key: 'stock_article_id'
   belongs_to :vat
   accepts_nested_attributes_for :vat
   

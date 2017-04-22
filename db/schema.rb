@@ -26,17 +26,17 @@ ActiveRecord::Schema.define(version: 20170420171511) do
   end
 
   create_table "order_lines", force: :cascade do |t|
-    t.integer  "article_id"
+    t.integer  "stock_article_id"
     t.integer  "order_id"
     t.string   "type"
     t.decimal  "amount"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.decimal  "article_price"
     t.decimal  "reduction"
     t.integer  "vat_id"
-    t.index ["article_id"], name: "index_order_lines_on_article_id"
     t.index ["order_id"], name: "index_order_lines_on_order_id"
+    t.index ["stock_article_id"], name: "index_order_lines_on_stock_article_id"
     t.index ["vat_id"], name: "index_order_lines_on_vat_id"
   end
 
