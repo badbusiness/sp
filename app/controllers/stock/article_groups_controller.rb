@@ -28,7 +28,7 @@ module Stock
     def create
       @article_group = ArticleGroup.new(article_group_params)
       if @article_group.save
-        redirect_to @article_group, notice: "Article was succesfully created"
+        redirect_to stock_article_groups_path, notice: "Article was succesfully created"
       else
         render :new
       end

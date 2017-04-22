@@ -73,13 +73,13 @@ ActiveRecord::Schema.define(version: 20170420171511) do
     t.integer  "number"
     t.string   "description"
     t.string   "specification"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.integer  "article_group_id"
-    t.decimal  "purchase_price",   default: "0.0"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "stock_article_group_id"
+    t.decimal  "purchase_price",         default: "0.0"
     t.string   "unit"
-    t.integer  "vat_id",           default: 3
-    t.index ["article_group_id"], name: "index_stock_articles_on_article_group_id"
+    t.integer  "vat_id",                 default: 3
+    t.index ["stock_article_group_id"], name: "index_stock_articles_on_stock_article_group_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -31,7 +31,7 @@ module Stock
         if @stock_article.save
           format.html {redirect_to @stock_article, notice: 'Article was succesfully created.'}
         else
-          format.html (render :new )
+          format.html {render :new, notice: "het ging niet goed" }
         end
       end
     end
@@ -39,9 +39,9 @@ module Stock
     private
     
     def article_params
-      params.require(:stock_article).permit(:number, :description, :specification, :article_group_id, :unit, :purchase_price, :vat_id,
-      article_group_attributes: [:id]
-      )
+      params.require(:stock_article).permit!#(:number, :description, :specification, :article_group_id, :unit, :purchase_price, :vat_id,
+      #stock_article_group_attributes: [:id]
+      #)
     end
     
     
