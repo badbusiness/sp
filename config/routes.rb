@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-
+  devise_for :users, controllers: { registrations: "registrations"}
+ 
+  
+  
   resources :comments
   resources :examples
-##  get 'supplier/new'
 
-
+  
   namespace :example do
     resources :resources
   end
