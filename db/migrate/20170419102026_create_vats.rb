@@ -16,7 +16,7 @@ class CreateVats < ActiveRecord::Migration[5.0]
     
     remove_column :stock_articles, :vat, :float
     add_column :stock_articles, :vat_id, :integer, default: 3
-    add_foreign_key :stock_articles, :vat
+    #add_foreign_key :stock_articles, :vat_id
     
     
   end
