@@ -14,7 +14,7 @@ end
 gem 'cocoon'
 
 gem "simple_form"
-
+gem "devise"
 gem 'jquery-turbolinks'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
